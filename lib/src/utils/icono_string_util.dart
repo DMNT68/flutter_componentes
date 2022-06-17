@@ -10,8 +10,8 @@ final _icons = <String,IconData>{
   'list'          : Icons.list,
 };
 
-Icon getIcon ( String nombreIcono ) {
+Icon getIcon ( String? nombreIcono ) {
 
-  return Icon (_icons[nombreIcono],color: Colors.blue);
+  return Icon (_icons[nombreIcono!],color: Colors.blue);
 
 }
