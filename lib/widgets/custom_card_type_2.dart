@@ -2,7 +2,11 @@ import 'package:componentes/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomCardType2 extends StatelessWidget {
-  const CustomCardType2({Key? key}) : super(key: key);
+  final String imageURrl;
+  final String? name;
+
+  const CustomCardType2({Key? key, required this.imageURrl, this.name})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,22 +18,22 @@ class CustomCardType2 extends StatelessWidget {
       shadowColor: AppTheme.primary.withOpacity(0.5),
       child: Column(
         children: [
-          const FadeInImage(
-            image: NetworkImage(
-                'https://cdn.dribbble.com/users/2081499/screenshots/5581528/star_wars_-_tatooine_def-01_4x.jpg'),
-            placeholder: AssetImage('assets/imperial_emblem.gif'),
+          FadeInImage(
+            image: NetworkImage(imageURrl),
+            placeholder: const AssetImage('assets/imperial_emblem.gif'),
             width: double.infinity,
             height: 230,
             fit: BoxFit.cover,
-            fadeInDuration: Duration(
+            fadeInDuration: const Duration(
               milliseconds: 300,
             ),
           ),
-          Container(
-            alignment: AlignmentDirectional.centerEnd,
-            padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
-            child: const Text('Landscape Tattoine'),
-          )
+          if (name != null)
+            Container(
+              alignment: AlignmentDirectional.centerEnd,
+              padding: const EdgeInsets.only(right: 20, top: 10, bottom: 10),
+              child: Text(name!),
+            )
         ],
       ),
     );
